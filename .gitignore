@@ -1,4 +1,11 @@
 # Compiled Object files
+.DS_Store
+.DS_Store?
+NSolver.sublime-project
+NSolver.sublime-workspace
+test_cases.sum
+
+
 *.slo
 *.lo
 *.o
