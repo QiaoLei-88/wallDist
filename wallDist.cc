@@ -386,6 +386,19 @@ namespace Step40
         if (cycle == 0)
           {
             GridGenerator::hyper_cube (triangulation);
+            for (typename Triangulation<dim>::active_cell_iterator
+                 cell = triangulation.begin_active();
+                 cell != triangulation.end();
+                 ++cell)
+              for (unsigned int f=0; f<GeometryInfo<dim>::faces_per_cell; ++f)
+                if (cell->face (f)->at_boundary())
+                  {
+                    if (cell->face (f)-> center()[0] > 0.9 || cell->face (f)-> center()[1] > 0.9 )
+                      {
+                        cell->face (f)->set_boundary_id (5);
+                      }
+                  }
+
             triangulation.refine_global (5);
           }
         else
